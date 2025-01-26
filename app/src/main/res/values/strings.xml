@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Первая Помощь</string>
+    <string name="btnHome"><u>Главная</u></string>
+    <string name="btnBookmark"><u>Избранное</u></string>
+    <string name="btnSearch"><u>Поиск</u></string>
+    <string name="btnBook"><u>Ситуации</u></string>
+    <string name="u_Multipage"><u><b>Многостраничный</b></u></string>
+    <string name="u_Onepage"><u><b>Одностраничный</b></u></string>
+    <string name="u_Slide"><u><b>Пролистываемый</b></u></string>
+    <string name="Multipage">Многостраничный</string>
+    <string name="Onepage">Одностраничный</string>
+    <string name="Slide">Пролистываемый</string>
+
+</resources>
