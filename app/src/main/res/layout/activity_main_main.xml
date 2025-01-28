@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/topMenu"
         android:layout_width="match_parent"
         android:layout_height="70dp"
@@ -19,44 +19,36 @@
 
         <ImageView
             android:id="@+id/logo"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginEnd="266dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="5dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_logo_img"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnSettings"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:src="@drawable/ic_logo_img" />
 
         <TextView
             android:id="@+id/crntPage"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="65dp"
-            android:layout_marginEnd="65dp"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
             android:fontFamily="@font/russo_one"
             android:gravity="center"
-            android:text="Первая Помощь"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:text="@string/topMenuMain"
+            android:textAlignment="center"
+            android:textSize="16sp" />
 
         <ImageButton
             android:id="@+id/btnSettings"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_menu"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/logo"
-            app:layout_constraintTop_toTopOf="parent"
             tools:ignore="SpeakableTextPresentCheck" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
     <GridLayout
         android:id="@+id/gridSituations"
@@ -72,6 +64,7 @@
         android:paddingEnd="15dp"
         android:rowCount="4"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topMenu">
 
@@ -150,6 +143,7 @@
                 android:textAlignment="center"
                 android:textSize="14sp" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/btnPoisoning"
             android:layout_width="100dp"
@@ -425,11 +419,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bottomMenu"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/shape_menu_top"
         android:orientation="horizontal"
         android:paddingHorizontal="10dp"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:id="@+id/btnHome"
@@ -455,8 +451,7 @@
                 android:fontFamily="sans-serif"
                 android:text="@string/btnHome"
                 android:textAlignment="center"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:textSize="14sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -492,7 +487,6 @@
             android:id="@+id/btnPhone"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_gravity="center"
             android:background="@drawable/shape_voice_assistant"
             android:padding="15dp"
             android:scaleType="centerCrop"
@@ -500,6 +494,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <LinearLayout
@@ -560,7 +555,4 @@
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

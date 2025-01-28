@@ -2,15 +2,12 @@ package com.konstudio.firstaid
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Typeface
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.konstudio.firstaid.databinding.ActivitySettingsBinding
 
@@ -29,8 +26,9 @@ class SettingsActivity : AppCompatActivity() {
 
         binding.btnHome.setOnClickListener {
             Log.d("Layouts", "Opened Home\nPaused Settings")
-            val homeIntent = Intent(this, MainActivity::class.java)
+            val homeIntent = Intent(this, MainMainActivity::class.java)
             startActivity(homeIntent)
+            finish()
         }
 
         val spinner = binding.spinnerLanguage
