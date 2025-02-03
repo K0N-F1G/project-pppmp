@@ -11,7 +11,7 @@
     <GridLayout
         android:id="@+id/gridSituations"
         android:layout_width="match_parent"
-        android:layout_height="470dp"
+        android:layout_height="0dp"
         android:layout_gravity="center_horizontal"
         android:columnCount="3"
         android:paddingStart="15dp"
@@ -22,19 +22,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/btnCPR"
             android:layout_width="100dp"
             android:layout_height="70dp"
+            android:minHeight="5dp"
+            android:minWidth="5dp"
             android:background="@drawable/shape_rounded_variants"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/imgCPR"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_cpr" />
+                android:src="@drawable/ic_cpr"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/txtCPR"/>
 
             <TextView
                 android:id="@+id/txtCPR"
@@ -43,10 +49,15 @@
                 android:fontFamily="sans-serif"
                 android:text="СЛР"
                 android:textAlignment="center"
-                android:textSize="14sp" />
+                android:autoSizeMaxTextSize="14sp"
+                android:autoSizeMinTextSize="10sp"
+                android:autoSizeTextType="uniform"
+                app:layout_constraintTop_toBottomOf="@id/imgCPR"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
-        </LinearLayout>
-
+        </androidx.constraintlayout.widget.ConstraintLayout>
         <LinearLayout
             android:id="@+id/btnBite"
             android:layout_width="100dp"
@@ -70,9 +81,10 @@
                 android:fontFamily="sans-serif"
                 android:text="Укус"
                 android:textAlignment="center"
-                android:textSize="14sp" />
+                android:autoSizeMaxTextSize="14sp"
+                android:autoSizeMinTextSize="10sp"
+                android:autoSizeTextType="uniform"/>
         </LinearLayout>
-
         <LinearLayout
             android:id="@+id/btnBurn"
             android:layout_width="100dp"
@@ -95,9 +107,10 @@
                 android:fontFamily="sans-serif"
                 android:text="Ожог"
                 android:textAlignment="center"
-                android:textSize="14sp" />
+                android:autoSizeMaxTextSize="14sp"
+                android:autoSizeMinTextSize="10sp"
+                android:autoSizeTextType="uniform"/>
         </LinearLayout>
-
         <LinearLayout
             android:id="@+id/btnPoisoning"
             android:layout_width="100dp"
@@ -119,10 +132,11 @@
                 android:fontFamily="sans-serif"
                 android:text="Отравление"
                 android:textAlignment="center"
-                android:textSize="14sp" />
+                android:autoSizeMaxTextSize="14sp"
+                android:autoSizeMinTextSize="10sp"
+                android:autoSizeTextType="uniform" />
 
         </LinearLayout>
-
         <LinearLayout
             android:id="@+id/btnChoking"
             android:layout_width="100dp"
@@ -146,9 +160,10 @@
                 android:fontFamily="sans-serif"
                 android:text="Удушье"
                 android:textAlignment="center"
-                android:textSize="14sp" />
+                android:autoSizeMaxTextSize="14sp"
+                android:autoSizeMinTextSize="10sp"
+                android:autoSizeTextType="uniform"/>
         </LinearLayout>
-
         <LinearLayout
             android:id="@+id/btnWound"
             android:layout_width="100dp"
@@ -171,9 +186,10 @@
                 android:fontFamily="sans-serif"
                 android:text="Кровотечение"
                 android:textAlignment="center"
-                android:textSize="14sp" />
+                android:autoSizeMaxTextSize="14sp"
+                android:autoSizeMinTextSize="10sp"
+                android:autoSizeTextType="uniform"/>
         </LinearLayout>
-
         <LinearLayout
             android:id="@+id/btnFreeze"
             android:layout_width="100dp"
@@ -195,10 +211,11 @@
                 android:fontFamily="sans-serif"
                 android:text="Обморожение"
                 android:textAlignment="center"
-                android:textSize="14sp" />
+                android:autoSizeMaxTextSize="14sp"
+                android:autoSizeMinTextSize="10sp"
+                android:autoSizeTextType="uniform"/>
 
         </LinearLayout>
-
         <LinearLayout
             android:id="@+id/btnBone"
             android:layout_width="100dp"
@@ -222,9 +239,10 @@
                 android:fontFamily="sans-serif"
                 android:text="Перелом"
                 android:textAlignment="center"
-                android:textSize="14sp" />
+                android:autoSizeMaxTextSize="14sp"
+                android:autoSizeMinTextSize="10sp"
+                android:autoSizeTextType="uniform"/>
         </LinearLayout>
-
         <LinearLayout
             android:id="@+id/btnElectrical"
             android:layout_width="100dp"
@@ -247,9 +265,10 @@
                 android:fontFamily="sans-serif"
                 android:text="Удар током"
                 android:textAlignment="center"
-                android:textSize="14sp" />
+                android:autoSizeMaxTextSize="14sp"
+                android:autoSizeMinTextSize="10sp"
+                android:autoSizeTextType="uniform"/>
         </LinearLayout>
-
         <LinearLayout
             android:id="@+id/btnDrugs"
             android:layout_width="100dp"
@@ -271,10 +290,11 @@
                 android:fontFamily="sans-serif"
                 android:text="Передозировка"
                 android:textAlignment="center"
-                android:textSize="14sp" />
+                android:autoSizeMaxTextSize="14sp"
+                android:autoSizeMinTextSize="10sp"
+                android:autoSizeTextType="uniform"/>
 
         </LinearLayout>
-
         <LinearLayout
             android:id="@+id/btnHypertension"
             android:layout_width="100dp"
@@ -298,9 +318,10 @@
                 android:fontFamily="sans-serif"
                 android:text="Гипертония"
                 android:textAlignment="center"
-                android:textSize="14sp" />
+                android:autoSizeMaxTextSize="14sp"
+                android:autoSizeMinTextSize="10sp"
+                android:autoSizeTextType="uniform"/>
         </LinearLayout>
-
         <LinearLayout
             android:id="@+id/btnHypotension"
             android:layout_width="100dp"
@@ -323,9 +344,10 @@
                 android:fontFamily="sans-serif"
                 android:text="Гипотония"
                 android:textAlignment="center"
-                android:textSize="14sp" />
+                android:autoSizeMaxTextSize="14sp"
+                android:autoSizeMinTextSize="10sp"
+                android:autoSizeTextType="uniform"/>
         </LinearLayout>
-
         <LinearLayout
             android:id="@+id/btnUBP"
             android:layout_height="70dp"
@@ -352,17 +374,21 @@
                 android:fontFamily="sans-serif"
                 android:text="Устойчивое Боковое Положение"
                 android:textAlignment="center"
-                android:textSize="14sp" />
+                android:autoSizeMaxTextSize="14sp"
+                android:autoSizeMinTextSize="10sp"
+                android:autoSizeTextType="uniform"/>
         </LinearLayout>
     </GridLayout>
 
     <ImageButton
         android:id="@+id/btnVoice"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintWidth_percent="0.43"
+        app:layout_constraintHeight_percent="0.2"
         android:background="@drawable/shape_voice_assistant"
         android:padding="25dp"
-        android:scaleType="centerCrop"
+        android:scaleType="fitCenter"
         android:src="@drawable/ic_voice_command"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -41,25 +41,28 @@ class SettingsFragment : Fragment() {
         }
 
         binding.layoutMultipage.setOnClickListener {
-            Log.d("Variants", "Selected Multipage variant")
             binding.txtMultipage.setText(R.string.u_Multipage)
             binding.txtOnepage.setText(R.string.Onepage)
             binding.txtSlide.setText(R.string.Slide)
-            Toast.makeText(activity, "Когда-нибудь вариант изменится на многостраничный", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(activity, "Когда-нибудь вариант изменится на многостраничный", Toast.LENGTH_SHORT).show()
+            binding.layoutVariants.tag = "Многостраничный"
+            Log.d("Variants", "Selected Multipage variant, tag: " + binding.layoutVariants.tag)
         }
         binding.layoutOnepage.setOnClickListener {
-            Log.d("Variants", "Selected Onepage variant")
             binding.txtMultipage.setText(R.string.Multipage)
             binding.txtOnepage.setText(R.string.u_Onepage)
             binding.txtSlide.setText(R.string.Slide)
-            Toast.makeText(activity, "Когда-нибудь вариант изменится на одностраничный", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(activity, "Когда-нибудь вариант изменится на одностраничный", Toast.LENGTH_SHORT).show()
+            binding.layoutVariants.tag = "Одностраничный"
+            Log.d("Variants", "Selected Onepage variant, tag: " + binding.layoutVariants.tag)
         }
         binding.layoutSlide.setOnClickListener {
-            Log.d("Variants", "Selected Slide variant")
             binding.txtMultipage.setText(R.string.Multipage)
             binding.txtOnepage.setText(R.string.Onepage)
             binding.txtSlide.setText(R.string.u_Slide)
-            Toast.makeText(activity, "Когда-нибудь вариант изменится на пролистываемый", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(activity, "Когда-нибудь вариант изменится на пролистываемый", Toast.LENGTH_SHORT).show()
+            binding.layoutVariants.tag = "Пролистываемый"
+            Log.d("Variants", "Selected Slide variant, tag: " + binding.layoutVariants.tag)
         }
 
         binding.btnSave.setOnClickListener {
@@ -76,6 +79,7 @@ class SettingsFragment : Fragment() {
         editor?.apply {
             putBoolean("SWITCH_SMP", binding.switchSMP.isChecked)
             putInt("SPINNER_LANGUAGE", binding.spinnerLanguage.selectedItemPosition)
+            putString("CHOSEN_VARIANT", binding.layoutVariants.tag.toString())
             //            putString("TXT_MULTIPAGE", stateMultipage)
             //            putString("TXT_ONEPAGE", stateOnepage)
             //            putString("TXT_SLIDE", stateSlide)
@@ -88,12 +92,33 @@ class SettingsFragment : Fragment() {
         val sharedPreferences = this.activity?.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
         val savedBooleanSwitchSMP = sharedPreferences?.getBoolean("SWITCH_SMP", true)
         val savedLanguagePos = sharedPreferences?.getInt("SPINNER_LANGUAGE", 0)
+        val savedVariant = sharedPreferences?.getString("CHOSEN_VARIANT", "Многостраничный")
+        Log.d("SharedPrefs", savedBooleanSwitchSMP.toString() + "\n" + savedLanguagePos.toString() + "\n" + savedVariant.toString())
 
         if (savedBooleanSwitchSMP != null) {
             binding.switchSMP.isChecked = savedBooleanSwitchSMP
         }
         if (savedLanguagePos != null) {
             binding.spinnerLanguage.setSelection(savedLanguagePos)
+        }
+        if (savedVariant == "Одностраничный") {
+            Log.d("IF", "$savedVariant == Одностраничный")
+            binding.layoutVariants.tag = savedVariant
+            binding.txtMultipage.setText(R.string.Multipage)
+            binding.txtOnepage.setText(R.string.u_Onepage)
+            binding.txtSlide.setText(R.string.Slide)
+        } else if (savedVariant == "Пролистываемый") {
+            Log.d("IF", "$savedVariant == Пролистываемый")
+            binding.layoutVariants.tag = savedVariant
+            binding.txtMultipage.setText(R.string.Multipage)
+            binding.txtOnepage.setText(R.string.Onepage)
+            binding.txtSlide.setText(R.string.u_Slide)
+        } else {
+            Log.d("IF", "$savedVariant")
+            binding.layoutVariants.tag = "Многостраничный"
+            binding.txtMultipage.setText(R.string.u_Multipage)
+            binding.txtOnepage.setText(R.string.Onepage)
+            binding.txtSlide.setText(R.string.Slide)
         }
     }
 

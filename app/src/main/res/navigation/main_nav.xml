@@ -11,20 +11,20 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_call3"
+            android:id="@+id/home_to_call"
             app:destination="@id/call" />
         <action
-            android:id="@+id/action_homeFragment_to_search3"
-            app:destination="@id/search" />
+            android:id="@+id/home_to_search"
+            app:destination="@id/searchFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_settingsFragment3"
+            android:id="@+id/home_to_settings"
             app:destination="@id/settingsFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_favorites3"
+            android:id="@+id/home_to_favorites"
             app:destination="@id/favorites" />
         <action
-            android:id="@+id/action_homeFragment_to_situations3"
-            app:destination="@id/situations" />
+            android:id="@+id/home_to_situations"
+            app:destination="@id/situationsFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -32,87 +32,93 @@
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" >
         <action
-            android:id="@+id/action_settingsFragment_to_homeFragment2"
+            android:id="@+id/settings_to_home"
             app:destination="@id/homeFragment" />
         <action
-            android:id="@+id/action_settingsFragment_to_call2"
+            android:id="@+id/settings_to_call"
             app:destination="@id/call" />
         <action
-            android:id="@+id/action_settingsFragment_to_search2"
-            app:destination="@id/search" />
+            android:id="@+id/settings_to_search"
+            app:destination="@id/searchFragment" />
         <action
-            android:id="@+id/action_settingsFragment_to_situations2"
-            app:destination="@id/situations" />
+            android:id="@+id/settings_to_situations"
+            app:destination="@id/situationsFragment" />
         <action
-            android:id="@+id/action_settingsFragment_to_favorites2"
+            android:id="@+id/settings_to_favorites"
             app:destination="@id/favorites" />
     </fragment>
-    <fragment android:id="@+id/search" >
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.konstudio.firstaid.SearchFragment"
+        tools:layout="@layout/fragment_search">
         <action
-            android:id="@+id/action_search_to_settingsFragment4"
+            android:id="@+id/search_to_settings"
             app:destination="@id/settingsFragment" />
         <action
-            android:id="@+id/action_search_to_homeFragment"
+            android:id="@+id/search_to_home"
             app:destination="@id/homeFragment" />
         <action
-            android:id="@+id/action_search_to_situations"
-            app:destination="@id/situations" />
+            android:id="@+id/search_to_situations"
+            app:destination="@id/situationsFragment" />
         <action
-            android:id="@+id/action_search_to_favorites"
+            android:id="@+id/search_to_favorites"
             app:destination="@id/favorites" />
         <action
-            android:id="@+id/action_search_to_call"
+            android:id="@+id/search_to_call"
             app:destination="@id/call" />
     </fragment>
     <fragment android:id="@+id/call" >
         <action
-            android:id="@+id/action_call_to_homeFragment"
+            android:id="@+id/call_to_home"
             app:destination="@id/homeFragment" />
         <action
-            android:id="@+id/action_call_to_search"
-            app:destination="@id/search" />
+            android:id="@+id/call_to_search"
+            app:destination="@id/searchFragment" />
         <action
-            android:id="@+id/action_call_to_settingsFragment3"
+            android:id="@+id/call_to_settings"
             app:destination="@id/settingsFragment" />
         <action
-            android:id="@+id/action_call_to_situations"
-            app:destination="@id/situations" />
+            android:id="@+id/call_to_situations"
+            app:destination="@id/situationsFragment" />
         <action
-            android:id="@+id/action_call_to_favorites"
+            android:id="@+id/call_to_favorites"
             app:destination="@id/favorites" />
     </fragment>
-    <fragment android:id="@+id/situations" >
+    <fragment
+        android:id="@+id/situationsFragment"
+        android:name="com.konstudio.firstaid.SituationsFragment"
+        tools:layout="@layout/fragment_situations">
         <action
-            android:id="@+id/action_situations_to_homeFragment2"
+            android:id="@+id/situations_to_home"
             app:destination="@id/homeFragment" />
         <action
-            android:id="@+id/action_situations_to_call2"
+            android:id="@+id/situations_to_call"
             app:destination="@id/call" />
         <action
-            android:id="@+id/action_situations_to_search2"
-            app:destination="@id/search" />
+            android:id="@+id/situations_to_search"
+            app:destination="@id/searchFragment" />
         <action
-            android:id="@+id/action_situations_to_settingsFragment6"
+            android:id="@+id/situations_to_settings"
             app:destination="@id/settingsFragment" />
         <action
-            android:id="@+id/action_situations_to_favorites2"
+            android:id="@+id/situations_to_favorites"
             app:destination="@id/favorites" />
     </fragment>
     <fragment android:id="@+id/favorites" >
         <action
-            android:id="@+id/action_favorites_to_homeFragment"
+            android:id="@+id/favorites_to_home"
             app:destination="@id/homeFragment" />
         <action
-            android:id="@+id/action_favorites_to_call"
+            android:id="@+id/favorites_to_call"
             app:destination="@id/call" />
         <action
-            android:id="@+id/action_favorites_to_search"
-            app:destination="@id/search" />
+            android:id="@+id/favorites_to_search"
+            app:destination="@id/searchFragment" />
         <action
-            android:id="@+id/action_favorites_to_settingsFragment3"
+            android:id="@+id/favorites_to_settings"
             app:destination="@id/settingsFragment" />
         <action
-            android:id="@+id/action_favorites_to_situations"
-            app:destination="@id/situations" />
+            android:id="@+id/favorites_to_situations"
+            app:destination="@id/situationsFragment" />
     </fragment>
 </navigation>

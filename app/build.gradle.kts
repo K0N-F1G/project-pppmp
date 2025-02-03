@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId = "com.konstudio.firstaid"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -39,7 +39,9 @@ android {
 }
 
 dependencies {
-
+    implementation(libs.androidx.recyclerview)
+    implementation(libs.javafaker)
+    implementation(libs.glide)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

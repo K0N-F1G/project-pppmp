@@ -17,4 +17,23 @@
     <string name="startReminder">Это спрограммированный макет мобильного приложения. Внешний вид приложения может быть изменён во время его дальнейшей разработки.Учтите, что на главной странице (следующей) из рабочих инструкций только "<font color="FF0000">Устойчивое Боковое Положение</font>" и "<font color="FF0000">Кровотечение</font>".</string>
     <string name="topMenuMain">Главная</string>
     <string name="topMenuSettings">Настройки</string>
+    <string name="topMenuBookmark">Избранное</string>
+    <string name="topMenuSearch">Поиск</string>
+    <string name="topMenuBook">Ситуации</string>
+    <!--/// НАЗВАНИЯ \\\-->
+    <string name="bleeding">Кровотечение</string>
+    <string name="mite">Укус</string>
+    <string name="burn">Ожог</string>
+    <string name="hypertonic">Гипертония</string>
+    <string name="hypotonic">Гипотония</string>
+    <string name="choking">Удушье</string>
+    <string name="poisoning">Отравление</string>
+    <string name="frozen">Обморожение</string>
+    <string name="broken_bone">Перелом</string>
+    <string name="electrical">Удар током</string>
+    <string name="drugs">Передозировка</string>
+    <string name="cpr">Сердечно-Лёгочная Реанимация</string>
+    <string name="ubp">Устойчивое Боковое Положение</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
