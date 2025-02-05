@@ -1,5 +1,6 @@
 package com.konstudio.firstaid
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -19,10 +20,25 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
+
+        val db = MainDb.getDb(activity as Context)
+
         binding.btnUBP.setOnClickListener() {
-            val intent = Intent(context, UBPOPActivity::class.java)
-            startActivity(intent)
+            Thread {
+                val savedVariant = db.getDao().findByName("chosenVariant")?.value.toString()
+                var intent = Intent(context, UBPMPActivity::class.java)
+                if (savedVariant == "Одностраничный") {
+                    intent = Intent(context, UBPOPActivity::class.java)
+                } else if (savedVariant == "Пролистываемый") {
+                    intent = Intent(context, UBPSLIDEActivity::class.java)
+                }
+                startActivity(intent)
+            }.start()
         }
+//        binding.btnUBPMP.setOnClickListener() {
+//            val intentMP = Intent(context, UBPMPActivity::class.java)
+//            startActivity(intentMP)
+//        }
         return binding.root
     }
 

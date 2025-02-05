@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.jetbrains.kotlin.android)
+    id("org.jetbrains.kotlin.android") version "2.0.21"
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -39,6 +40,20 @@ android {
 }
 
 dependencies {
+    implementation(libs.circleindicator)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.core.ktx.v190)
+    implementation(libs.androidx.appcompat.v151)
+    implementation(libs.material.v161)
+    implementation(libs.androidx.constraintlayout.v214)
+    implementation(libs.androidx.room.common)
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler.v250)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit.v113)
+    androidTestImplementation(libs.androidx.espresso.core.v340)
+
     implementation(libs.androidx.recyclerview)
     implementation(libs.javafaker)
     implementation(libs.glide)

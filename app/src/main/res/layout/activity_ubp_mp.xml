@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UBPOPActivity">
+    tools:context=".UBPMPActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topMenu"
@@ -60,31 +60,24 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager2"
         android:layout_width="match_parent"
-        android:layout_height="632dp"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="30dp"
-        android:padding="10dp"
         android:background="@drawable/shape_instruction"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/topMenu"
+        android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-        <TextView
-            android:id="@+id/txtUBPMP"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:text="@string/ubp_op"
-            android:fontFamily="@font/roboto"
-            android:textSize="16sp" />
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ubp_op"
-            android:scaleType="fitCenter"/>
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/topMenu" />
+
+    <me.relex.circleindicator.CircleIndicator3
+        android:id="@+id/indicator"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:ci_drawable="@drawable/shape_ci_black"
+        app:layout_constraintTop_toBottomOf="@+id/viewPager2" />
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bottomMenu"
         android:layout_width="match_parent"

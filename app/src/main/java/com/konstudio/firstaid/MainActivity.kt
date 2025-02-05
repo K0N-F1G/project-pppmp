@@ -29,10 +29,10 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val text = SpannableString("Это спрограммированный макет мобильного приложения. Внешний вид приложения может быть изменён во время его дальнейшей разработки. \n\nУчтите, что на главной странице (следующей) из рабочих инструкций только 'Устойчивое Боковое Положение' и 'Кровотечение'")
+        val text = SpannableString("Это спрограммированный макет мобильного приложения. Внешний вид приложения может быть изменён во время его дальнейшей разработки. \n\nУчтите, что на главной странице (следующей) из рабочих инструкций только 'Устойчивое Боковое Положение'")
 
         text.setSpan(ForegroundColorSpan(Color.RED), 206, 234, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-        text.setSpan(ForegroundColorSpan(Color.RED), 239, 251, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+//        text.setSpan(ForegroundColorSpan(Color.RED), 239, 251, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
 
         binding.txtMain.setText(text)
 

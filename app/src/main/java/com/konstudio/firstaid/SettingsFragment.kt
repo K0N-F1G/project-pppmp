@@ -73,53 +73,87 @@ class SettingsFragment : Fragment() {
     }
 
     private fun saveData() {
-        val sharedPreferences =  this.activity?.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
-        val editor = sharedPreferences?.edit()
+//        val sharedPreferences =  this.activity?.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+//        val editor = sharedPreferences?.edit()
+//
+//        editor?.apply {
+//            putBoolean("SWITCH_SMP", binding.switchSMP.isChecked)
+//            putInt("SPINNER_LANGUAGE", binding.spinnerLanguage.selectedItemPosition)
+//            putString("CHOSEN_VARIANT", binding.layoutVariants.tag.toString())
+//            //            putString("TXT_MULTIPAGE", stateMultipage)
+//            //            putString("TXT_ONEPAGE", stateOnepage)
+//            //            putString("TXT_SLIDE", stateSlide)
+//
+//        }?.apply()
 
-        editor?.apply {
-            putBoolean("SWITCH_SMP", binding.switchSMP.isChecked)
-            putInt("SPINNER_LANGUAGE", binding.spinnerLanguage.selectedItemPosition)
-            putString("CHOSEN_VARIANT", binding.layoutVariants.tag.toString())
-            //            putString("TXT_MULTIPAGE", stateMultipage)
-            //            putString("TXT_ONEPAGE", stateOnepage)
-            //            putString("TXT_SLIDE", stateSlide)
+        // SQLite + ROOM
+        val db = MainDb.getDb(activity as Context)
 
-        }?.apply()
+        fun updateValueByName(name: String, value: String) {
+            val entity = db.getDao().findByName(name)
+            entity?.let {
+                it.value = value
+                db.getDao().updateItem(it)
+            }
+        }
+
+        Thread{
+            //Кнопка вызова СМП
+            if (db.getDao().findByName("switchSMP") == null) {
+                Log.d("DB", "switchSMP is null")
+                db.getDao().insertItem(SettingsItem(null, "switchSMP", binding.switchSMP.isChecked.toString()))
+            } else {
+                updateValueByName("switchSMP", binding.switchSMP.isChecked.toString())
+            }
+            //Вариант
+            if (db.getDao().findByName("chosenVariant") == null) {
+                Log.d("DB", "chosenVariant is null")
+                db.getDao().insertItem(SettingsItem(null, "chosenVariant", binding.layoutVariants.tag.toString()))
+            } else {
+                updateValueByName("chosenVariant", binding.layoutVariants.tag.toString())
+            }
+        }.start()
+        db.close()
         Toast.makeText(activity, "Сохранено... наверное...", Toast.LENGTH_SHORT).show()
     }
 
     private fun loadData() {
         val sharedPreferences = this.activity?.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
-        val savedBooleanSwitchSMP = sharedPreferences?.getBoolean("SWITCH_SMP", true)
+//        val savedBooleanSwitchSMP = sharedPreferences?.getBoolean("SWITCH_SMP", true)
         val savedLanguagePos = sharedPreferences?.getInt("SPINNER_LANGUAGE", 0)
-        val savedVariant = sharedPreferences?.getString("CHOSEN_VARIANT", "Многостраничный")
-        Log.d("SharedPrefs", savedBooleanSwitchSMP.toString() + "\n" + savedLanguagePos.toString() + "\n" + savedVariant.toString())
+//        val savedVariant = sharedPreferences?.getString("CHOSEN_VARIANT", "Многостраничный")
 
-        if (savedBooleanSwitchSMP != null) {
-            binding.switchSMP.isChecked = savedBooleanSwitchSMP
-        }
-        if (savedLanguagePos != null) {
-            binding.spinnerLanguage.setSelection(savedLanguagePos)
-        }
-        if (savedVariant == "Одностраничный") {
-            Log.d("IF", "$savedVariant == Одностраничный")
-            binding.layoutVariants.tag = savedVariant
-            binding.txtMultipage.setText(R.string.Multipage)
-            binding.txtOnepage.setText(R.string.u_Onepage)
-            binding.txtSlide.setText(R.string.Slide)
-        } else if (savedVariant == "Пролистываемый") {
-            Log.d("IF", "$savedVariant == Пролистываемый")
-            binding.layoutVariants.tag = savedVariant
-            binding.txtMultipage.setText(R.string.Multipage)
-            binding.txtOnepage.setText(R.string.Onepage)
-            binding.txtSlide.setText(R.string.u_Slide)
-        } else {
-            Log.d("IF", "$savedVariant")
-            binding.layoutVariants.tag = "Многостраничный"
-            binding.txtMultipage.setText(R.string.u_Multipage)
-            binding.txtOnepage.setText(R.string.Onepage)
-            binding.txtSlide.setText(R.string.Slide)
-        }
+        //ROOM
+        val db = MainDb.getDb(activity as Context)
+        Thread {
+            val savedBooleanSwitchSMP = db.getDao().findByName("switchSMP")?.value
+            val savedVariant = db.getDao().findByName("chosenVariant")?.value
+            Log.d("DB", "savedBooleanSwitchSMp = $savedBooleanSwitchSMP\nsavedVariant = $savedVariant")
+
+            if (savedBooleanSwitchSMP != null) {
+                binding.switchSMP.isChecked = savedBooleanSwitchSMP.toBoolean()
+            }
+            if (savedLanguagePos != null) {
+                binding.spinnerLanguage.setSelection(savedLanguagePos)
+            }
+            if (savedVariant == "Одностраничный") {
+                binding.layoutVariants.tag = savedVariant
+                binding.txtMultipage.setText(R.string.Multipage)
+                binding.txtOnepage.setText(R.string.u_Onepage)
+                binding.txtSlide.setText(R.string.Slide)
+            } else if (savedVariant == "Пролистываемый") {
+                binding.layoutVariants.tag = savedVariant
+                binding.txtMultipage.setText(R.string.Multipage)
+                binding.txtOnepage.setText(R.string.Onepage)
+                binding.txtSlide.setText(R.string.u_Slide)
+            } else {
+                binding.layoutVariants.tag = "Многостраничный"
+                binding.txtMultipage.setText(R.string.u_Multipage)
+                binding.txtOnepage.setText(R.string.Onepage)
+                binding.txtSlide.setText(R.string.Slide)
+            }
+        }.start()
+
     }
 
     override fun onDestroyView() {

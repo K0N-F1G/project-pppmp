@@ -1,6 +1,7 @@
 package com.konstudio.firstaid
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -26,6 +27,15 @@ class SituationsFragment : Fragment() {
         _binding = FragmentSituationsBinding.inflate(inflater, container, false)
 
         loadData()
+
+        binding.btnUBPOP.setOnClickListener() {
+            val intentOP = Intent(context, UBPOPActivity::class.java)
+            startActivity(intentOP)
+        }
+        binding.btnUBPSLIDE.setOnClickListener() {
+            val intentSLIDE = Intent(context, UBPSLIDEActivity::class.java)
+            startActivity(intentSLIDE)
+        }
 
         binding.iconAddFavoriteWound.setOnClickListener {
             if (binding.iconAddFavoriteWound.tag.toString() == "NotInFavorite") {

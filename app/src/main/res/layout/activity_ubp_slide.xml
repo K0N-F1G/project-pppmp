@@ -60,31 +60,75 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="632dp"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="30dp"
-        android:padding="10dp"
+        android:layout_height="680dp"
         android:background="@drawable/shape_instruction"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/topMenu"
+        app:layout_constraintTop_toBottomOf="@id/topMenu"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-        <TextView
-            android:id="@+id/txtUBPMP"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="15dp">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:text="@string/ubp_op"
-            android:fontFamily="@font/roboto"
-            android:textSize="16sp" />
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ubp_op"
-            android:scaleType="fitCenter"/>
-    </LinearLayout>
+            android:orientation="vertical"
+            android:padding="5dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ubp_1"
+                android:fontFamily="@font/roboto"
+                android:textSize="16sp"
+                android:textAlignment="center"
+                android:layout_margin="10dp"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ubp1"
+                android:scaleType="fitCenter"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ubp_2"
+                android:fontFamily="@font/roboto"
+                android:textSize="16sp"
+                android:textAlignment="center"
+                android:layout_margin="10dp"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ubp2"
+                android:scaleType="fitXY"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ubp_3"
+                android:fontFamily="@font/roboto"
+                android:textSize="16sp"
+                android:textAlignment="center"
+                android:layout_margin="10dp"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ubp3"
+                android:scaleType="fitCenter"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ubp_4"
+                android:fontFamily="@font/roboto"
+                android:textSize="16sp"
+                android:textAlignment="center"
+                android:layout_margin="10dp"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ubp4"
+                android:scaleType="fitCenter"/>
+        </LinearLayout>
+    </ScrollView>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bottomMenu"
         android:layout_width="match_parent"

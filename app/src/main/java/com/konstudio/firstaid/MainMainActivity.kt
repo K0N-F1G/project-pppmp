@@ -58,5 +58,13 @@ class MainMainActivity : AppCompatActivity() {
             binding.txtBook.setText(R.string.bottomMenuBook)
             navController.navigate(R.id.searchFragment)
         }
+        binding.btnBookmark.setOnClickListener {
+            binding.crntPage.setText(R.string.topMenuSearch)
+            binding.txtHome.setText(R.string.bottomMenuHome)
+            binding.txtBookmark.setText(R.string.btnBookmark)
+            binding.txtSearch.setText(R.string.bottomMenuSearch)
+            binding.txtBook.setText(R.string.bottomMenuBook)
+            navController.navigate(R.id.favoritesFragment)
+        }
     }
 }

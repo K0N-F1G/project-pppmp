@@ -21,7 +21,7 @@
             app:destination="@id/settingsFragment" />
         <action
             android:id="@+id/home_to_favorites"
-            app:destination="@id/favorites" />
+            app:destination="@id/favoritesFragment" />
         <action
             android:id="@+id/home_to_situations"
             app:destination="@id/situationsFragment" />
@@ -45,7 +45,7 @@
             app:destination="@id/situationsFragment" />
         <action
             android:id="@+id/settings_to_favorites"
-            app:destination="@id/favorites" />
+            app:destination="@id/favoritesFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
@@ -62,7 +62,7 @@
             app:destination="@id/situationsFragment" />
         <action
             android:id="@+id/search_to_favorites"
-            app:destination="@id/favorites" />
+            app:destination="@id/favoritesFragment" />
         <action
             android:id="@+id/search_to_call"
             app:destination="@id/call" />
@@ -82,7 +82,7 @@
             app:destination="@id/situationsFragment" />
         <action
             android:id="@+id/call_to_favorites"
-            app:destination="@id/favorites" />
+            app:destination="@id/favoritesFragment" />
     </fragment>
     <fragment
         android:id="@+id/situationsFragment"
@@ -102,9 +102,12 @@
             app:destination="@id/settingsFragment" />
         <action
             android:id="@+id/situations_to_favorites"
-            app:destination="@id/favorites" />
+            app:destination="@id/favoritesFragment" />
     </fragment>
-    <fragment android:id="@+id/favorites" >
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.konstudio.firstaid.FavoritesFragment"
+        tools:layout="@layout/fragment_favorites">
         <action
             android:id="@+id/favorites_to_home"
             app:destination="@id/homeFragment" />
