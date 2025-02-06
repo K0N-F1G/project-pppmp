@@ -1,5 +1,7 @@
 package com.konstudio.firstaid
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,6 +33,21 @@ class SituationsAdapter (var mList: List<SituationsData>) : RecyclerView.Adapter
         val currentItem = mList[position]
         holder.img.setImageResource(currentItem.img)
         holder.name.text = currentItem.name
+        holder.itemView.setOnClickListener {
+            Thread {
+                val db = MainDb.getDb(holder.itemView.context)
+                val savedVariant = db.getDao().findByName("chosenVariant")?.value.toString()
+                if (currentItem.name == "Устойчивое Боковое Положение") {
+                    var intent = Intent(holder.itemView.context, UBPMPActivity::class.java)
+                    if (savedVariant == "Одностраничный") {
+                        intent = Intent(holder.itemView.context, UBPOPActivity::class.java)
+                    } else if (savedVariant == "Пролистываемый") {
+                        intent = Intent(holder.itemView.context, UBPSLIDEActivity::class.java)
+                    }
+                    holder.itemView.context.startActivity(intent)
+                }
+            }.start()
+        }
     }
 
 

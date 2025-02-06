@@ -114,14 +114,10 @@ class SettingsFragment : Fragment() {
             }
         }.start()
         db.close()
-        Toast.makeText(activity, "Сохранено... наверное...", Toast.LENGTH_SHORT).show()
+        Toast.makeText(activity, "Сохранено!", Toast.LENGTH_SHORT).show()
     }
 
     private fun loadData() {
-        val sharedPreferences = this.activity?.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
-//        val savedBooleanSwitchSMP = sharedPreferences?.getBoolean("SWITCH_SMP", true)
-        val savedLanguagePos = sharedPreferences?.getInt("SPINNER_LANGUAGE", 0)
-//        val savedVariant = sharedPreferences?.getString("CHOSEN_VARIANT", "Многостраничный")
 
         //ROOM
         val db = MainDb.getDb(activity as Context)
@@ -130,27 +126,34 @@ class SettingsFragment : Fragment() {
             val savedVariant = db.getDao().findByName("chosenVariant")?.value
             Log.d("DB", "savedBooleanSwitchSMp = $savedBooleanSwitchSMP\nsavedVariant = $savedVariant")
 
+
             if (savedBooleanSwitchSMP != null) {
-                binding.switchSMP.isChecked = savedBooleanSwitchSMP.toBoolean()
+                requireActivity().runOnUiThread {
+                    binding.switchSMP.isChecked = savedBooleanSwitchSMP.toBoolean()
+                }
             }
-            if (savedLanguagePos != null) {
-                binding.spinnerLanguage.setSelection(savedLanguagePos)
-            }
+
             if (savedVariant == "Одностраничный") {
-                binding.layoutVariants.tag = savedVariant
-                binding.txtMultipage.setText(R.string.Multipage)
-                binding.txtOnepage.setText(R.string.u_Onepage)
-                binding.txtSlide.setText(R.string.Slide)
+                requireActivity().runOnUiThread {
+                    binding.layoutVariants.tag = savedVariant
+                    binding.txtMultipage.setText(R.string.Multipage)
+                    binding.txtOnepage.setText(R.string.u_Onepage)
+                    binding.txtSlide.setText(R.string.Slide)
+                }
             } else if (savedVariant == "Пролистываемый") {
-                binding.layoutVariants.tag = savedVariant
-                binding.txtMultipage.setText(R.string.Multipage)
-                binding.txtOnepage.setText(R.string.Onepage)
-                binding.txtSlide.setText(R.string.u_Slide)
+                    requireActivity().runOnUiThread {
+                        binding.layoutVariants.tag = savedVariant
+                        binding.txtMultipage.setText(R.string.Multipage)
+                        binding.txtOnepage.setText(R.string.Onepage)
+                        binding.txtSlide.setText(R.string.u_Slide)
+                    }
             } else {
-                binding.layoutVariants.tag = "Многостраничный"
-                binding.txtMultipage.setText(R.string.u_Multipage)
-                binding.txtOnepage.setText(R.string.Onepage)
-                binding.txtSlide.setText(R.string.Slide)
+                    requireActivity().runOnUiThread {
+                        binding.layoutVariants.tag = "Многостраничный"
+                        binding.txtMultipage.setText(R.string.u_Multipage)
+                        binding.txtOnepage.setText(R.string.Onepage)
+                        binding.txtSlide.setText(R.string.Slide)
+                    }
             }
         }.start()
 

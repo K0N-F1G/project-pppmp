@@ -9,8 +9,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.konstudio.firstaid.databinding.FragmentSettingsBinding
 import com.konstudio.firstaid.databinding.FragmentSituationsBinding
@@ -20,6 +24,9 @@ class SituationsFragment : Fragment() {
     private var _binding: FragmentSituationsBinding? = null
     private val binding get() = _binding!!
 
+    private lateinit var startForResult: ActivityResultLauncher<Intent>
+    private lateinit var viewModel: SharedViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,13 +35,66 @@ class SituationsFragment : Fragment() {
 
         loadData()
 
+        viewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
+        startForResult = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) { result ->
+            if (result.resultCode == AppCompatActivity.RESULT_OK) { // Use AppCompatActivity.RESULT_OK
+                val data = result.data
+                val navigateToHome = data?.getBooleanExtra("navigateToHome", false) ?: false
+                val navigateToBook = data?.getBooleanExtra("navigateToBook", false) ?: false
+                val navigateToSearch = data?.getBooleanExtra("navigateToSearch", false) ?: false
+                val navigateToSettings = data?.getBooleanExtra("navigateToSettings", false) ?: false
+
+                val navController = findNavController()
+
+                if (navigateToHome) {
+                    viewModel.crntPage.value = R.string.topMenuMain
+                    viewModel.txtHome.value = R.string.btnHome
+                    viewModel.txtSearch.value = R.string.bottomMenuSearch
+                    viewModel.txtSituations.value = R.string.bottomMenuBook
+                    navController.navigate(R.id.homeFragment)
+                } else if (navigateToBook) {
+                    viewModel.crntPage.value = R.string.topMenuBook
+                    viewModel.txtHome.value = R.string.bottomMenuHome
+                    viewModel.txtSearch.value = R.string.bottomMenuSearch
+                    viewModel.txtSituations.value = R.string.btnBook
+                    navController.navigate(R.id.situationsFragment)
+                } else if (navigateToSearch) {
+                    viewModel.crntPage.value = R.string.topMenuSearch
+                    viewModel.txtHome.value = R.string.bottomMenuHome
+                    viewModel.txtSearch.value = R.string.btnSearch
+                    viewModel.txtSituations.value = R.string.bottomMenuBook
+                    navController.navigate(R.id.searchFragment)
+                } else if (navigateToSettings) {
+                    viewModel.crntPage.value = R.string.topMenuSettings
+                    viewModel.txtHome.value = R.string.bottomMenuHome
+                    viewModel.txtSearch.value = R.string.bottomMenuSearch
+                    viewModel.txtSituations.value = R.string.bottomMenuBook
+                    navController.navigate(R.id.settingsFragment)
+                }
+            }
+        }
+
         binding.btnUBPOP.setOnClickListener() {
-            val intentOP = Intent(context, UBPOPActivity::class.java)
-            startActivity(intentOP)
+//            val intentOP = Intent(context, UBPOPActivity::class.java)
+//            startActivity(intentOP)
+            Thread {
+                val intent = Intent(context, UBPOPActivity::class.java)
+                startForResult.launch(intent)
+            }.start()
         }
         binding.btnUBPSLIDE.setOnClickListener() {
-            val intentSLIDE = Intent(context, UBPSLIDEActivity::class.java)
-            startActivity(intentSLIDE)
+            Thread {
+                val intent = Intent(context, UBPSLIDEActivity::class.java)
+                startForResult.launch(intent)
+            }.start()
+        }
+        binding.btnUBPMP.setOnClickListener() {
+            Thread {
+                val intent = Intent(context, UBPMPActivity::class.java)
+                startForResult.launch(intent)
+            }.start()
         }
 
         binding.iconAddFavoriteWound.setOnClickListener {
