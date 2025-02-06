@@ -1,14 +1,39 @@
 <resources>
     <string name="app_name">Первая Помощь</string>
-    <string name="btnHome"><u>Главная</u></string>
-    <string name="btnBookmark"><u>Избранное</u></string>
-    <string name="btnSearch"><u>Поиск</u></string>
-    <string name="btnBook"><u>Ситуации</u></string>
+    <string name="btnHome"><u><b>Главная</b></u></string>
+    <string name="btnBookmark"><u><b>Избранное</b></u></string>
+    <string name="btnSearch"><u><b>Поиск</b></u></string>
+    <string name="btnBook"><u><b>Ситуации</b></u></string>
+    <string name="bottomMenuHome">Главная</string>
+    <string name="bottomMenuBookmark">Избранное</string>
+    <string name="bottomMenuSearch">Поиск</string>
+    <string name="bottomMenuBook">Ситуации</string>
     <string name="u_Multipage"><u><b>Многостраничный</b></u></string>
     <string name="u_Onepage"><u><b>Одностраничный</b></u></string>
     <string name="u_Slide"><u><b>Пролистываемый</b></u></string>
     <string name="Multipage">Многостраничный</string>
     <string name="Onepage">Одностраничный</string>
     <string name="Slide">Пролистываемый</string>
-
+    <string name="startReminder">Это спрограммированный макет мобильного приложения. Внешний вид приложения может быть изменён во время его дальнейшей разработки.Учтите, что на главной странице (следующей) из рабочих инструкций только "<font color="FF0000">Устойчивое Боковое Положение</font>" и "<font color="FF0000">Кровотечение</font>".</string>
+    <string name="topMenuMain">Главная</string>
+    <string name="topMenuSettings">Настройки</string>
+    <string name="topMenuBookmark">Избранное</string>
+    <string name="topMenuSearch">Поиск</string>
+    <string name="topMenuBook">Ситуации</string>
+    <!--/// НАЗВАНИЯ \\\-->
+    <string name="bleeding">Кровотечение</string>
+    <string name="mite">Укус</string>
+    <string name="burn">Ожог</string>
+    <string name="hypertonic">Гипертония</string>
+    <string name="hypotonic">Гипотония</string>
+    <string name="choking">Удушье</string>
+    <string name="poisoning">Отравление</string>
+    <string name="frozen">Обморожение</string>
+    <string name="broken_bone">Перелом</string>
+    <string name="electrical">Удар током</string>
+    <string name="drugs">Передозировка</string>
+    <string name="cpr">Сердечно-Лёгочная Реанимация</string>
+    <string name="ubp">Устойчивое Боковое Положение</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
