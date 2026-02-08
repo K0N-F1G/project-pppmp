@@ -5,7 +5,7 @@
     <string name="btnSearch"><u><b>Поиск</b></u></string>
     <string name="btnBook"><u><b>Ситуации</b></u></string>
     <string name="bottomMenuHome">Главная</string>
-    <string name="bottomMenuBookmark">Избранное</string>
+    <string name="bottomMenuBookmark">Помощь</string>
     <string name="bottomMenuSearch">Поиск</string>
     <string name="bottomMenuBook">Ситуации</string>
     <string name="u_Multipage"><u><b>Многостраничный</b></u></string>
@@ -36,4 +36,5 @@
     <string name="ubp">Устойчивое Боковое Положение</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_compose">ComposeActivity</string>
 </resources>

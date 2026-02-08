@@ -1,6 +1,5 @@
 package com.konstudio.firstaid
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -91,6 +90,7 @@ class HomeFragment : Fragment() {
 
         return binding.root
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

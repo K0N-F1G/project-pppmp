@@ -4,5 +4,6 @@
         <!-- Customize your light theme here. -->
         <item name="android:statusBarColor">#00000000</item>
     </style>
+
     <style name="Theme.ПерваяПомощь" parent="Base.Theme.ПерваяПомощь" />
 </resources>
