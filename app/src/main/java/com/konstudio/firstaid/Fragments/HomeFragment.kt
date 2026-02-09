@@ -1,16 +1,22 @@
-package com.konstudio.firstaid
+package com.konstudio.firstaid.Fragments
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.konstudio.firstaid.Database.MainDb
+import com.konstudio.firstaid.R
+import com.konstudio.firstaid.Situations.SharedViewModel
+import com.konstudio.firstaid.Situations.Multipage.MP_UBP_Activity
+import com.konstudio.firstaid.Situations.Onepage.OP_UBP_Activity
+import com.konstudio.firstaid.Situations.Slidable.SLIDE_UBP_Activity
 import com.konstudio.firstaid.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -21,7 +27,7 @@ class HomeFragment : Fragment() {
     private lateinit var startForResult: ActivityResultLauncher<Intent>
     private lateinit var viewModel: SharedViewModel
 
-    override fun onCreate(savedInstanceState: Bundle?) {  // Correct spelling: onCreate
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         viewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
@@ -29,7 +35,7 @@ class HomeFragment : Fragment() {
         startForResult = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
         ) { result ->
-            if (result.resultCode == AppCompatActivity.RESULT_OK) { // Use AppCompatActivity.RESULT_OK
+            if (result.resultCode == AppCompatActivity.RESULT_OK) {
                 val data = result.data
                 val navigateToHome = data?.getBooleanExtra("navigateToHome", false) ?: false
                 val navigateToBook = data?.getBooleanExtra("navigateToBook", false) ?: false
@@ -73,16 +79,16 @@ class HomeFragment : Fragment() {
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        val db = MainDb.getDb(requireContext()) // Use requireContext()
+        val db = MainDb.Companion.getDb(requireContext())
 
         binding.btnUBP.setOnClickListener {
             Thread {
                 val savedVariant = db.getDao().findByName("chosenVariant")?.value.toString()
-                var intent = Intent(context, UBPMPActivity::class.java)
+                var intent = Intent(context, MP_UBP_Activity::class.java)
                 if (savedVariant == "Одностраничный") {
-                    intent = Intent(context, UBPOPActivity::class.java)
+                    intent = Intent(context, OP_UBP_Activity::class.java)
                 } else if (savedVariant == "Пролистываемый") {
-                    intent = Intent(context, UBPSLIDEActivity::class.java)
+                    intent = Intent(context, SLIDE_UBP_Activity::class.java)
                 }
                 startForResult.launch(intent)
             }.start()

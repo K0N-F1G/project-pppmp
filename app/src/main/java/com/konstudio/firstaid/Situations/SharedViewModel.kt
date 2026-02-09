@@ -1,4 +1,4 @@
-package com.konstudio.firstaid
+package com.konstudio.firstaid.Situations
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="25dp"
-    tools:context=".HomeFragment"
+    tools:context=".Fragments.HomeFragment"
     android:orientation="vertical"
     android:gravity="center|top">
 

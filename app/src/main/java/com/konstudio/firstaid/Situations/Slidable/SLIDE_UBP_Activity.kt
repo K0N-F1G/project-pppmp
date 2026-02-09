@@ -1,21 +1,16 @@
-package com.konstudio.firstaid
+package com.konstudio.firstaid.Situations.Slidable
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.Html
-import android.util.Log
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.konstudio.firstaid.databinding.ActivityUbpOpBinding
+import com.konstudio.firstaid.databinding.ActivityUbpSlideBinding
 
-class UBPOPActivity : AppCompatActivity() {
-    lateinit var binding: ActivityUbpOpBinding
+class SLIDE_UBP_Activity : AppCompatActivity() {
+    lateinit var binding: ActivityUbpSlideBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityUbpOpBinding.inflate(layoutInflater)
+        binding = ActivityUbpSlideBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.btnHome.setOnClickListener {

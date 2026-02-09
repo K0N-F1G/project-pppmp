@@ -1,4 +1,4 @@
-package com.konstudio.firstaid
+package com.konstudio.firstaid.Situations
 
 import android.os.Parcel
 import android.os.Parcelable

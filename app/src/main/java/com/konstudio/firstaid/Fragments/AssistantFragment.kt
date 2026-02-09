@@ -1,22 +1,21 @@
-package com.konstudio.firstaid
+package com.konstudio.firstaid.Fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.konstudio.firstaid.databinding.FragmentFavoritesBinding
+import com.konstudio.firstaid.R
 
-class FavoritesFragment : Fragment() {
+class AssistantFragment : Fragment() {
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_favorites, container, false)
+        return inflater.inflate(R.layout.fragment_assistant, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

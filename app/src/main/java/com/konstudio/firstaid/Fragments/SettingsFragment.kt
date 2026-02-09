@@ -1,15 +1,18 @@
-package com.konstudio.firstaid
+package com.konstudio.firstaid.Fragments
 
+import android.R
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import com.konstudio.firstaid.Database.MainDb
+import com.konstudio.firstaid.Database.SettingsItem
 import com.konstudio.firstaid.databinding.FragmentSettingsBinding
 
 class SettingsFragment : Fragment() {
@@ -28,8 +31,9 @@ class SettingsFragment : Fragment() {
         loadData()
 
         val spinner = binding.spinnerLanguage
-        val adapter = ArrayAdapter(activity as Context, android.R.layout.simple_spinner_dropdown_item, languages)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        val adapter =
+            ArrayAdapter(activity as Context, R.layout.simple_spinner_dropdown_item, languages)
+        adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
         spinner.isEnabled = false
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -41,25 +45,25 @@ class SettingsFragment : Fragment() {
         }
 
         binding.layoutMultipage.setOnClickListener {
-            binding.txtMultipage.setText(R.string.u_Multipage)
-            binding.txtOnepage.setText(R.string.Onepage)
-            binding.txtSlide.setText(R.string.Slide)
+            binding.txtMultipage.setText(com.konstudio.firstaid.R.string.u_Multipage)
+            binding.txtOnepage.setText(com.konstudio.firstaid.R.string.Onepage)
+            binding.txtSlide.setText(com.konstudio.firstaid.R.string.Slide)
 //            Toast.makeText(activity, "Когда-нибудь вариант изменится на многостраничный", Toast.LENGTH_SHORT).show()
             binding.layoutVariants.tag = "Многостраничный"
             Log.d("Variants", "Selected Multipage variant, tag: " + binding.layoutVariants.tag)
         }
         binding.layoutOnepage.setOnClickListener {
-            binding.txtMultipage.setText(R.string.Multipage)
-            binding.txtOnepage.setText(R.string.u_Onepage)
-            binding.txtSlide.setText(R.string.Slide)
+            binding.txtMultipage.setText(com.konstudio.firstaid.R.string.Multipage)
+            binding.txtOnepage.setText(com.konstudio.firstaid.R.string.u_Onepage)
+            binding.txtSlide.setText(com.konstudio.firstaid.R.string.Slide)
 //            Toast.makeText(activity, "Когда-нибудь вариант изменится на одностраничный", Toast.LENGTH_SHORT).show()
             binding.layoutVariants.tag = "Одностраничный"
             Log.d("Variants", "Selected Onepage variant, tag: " + binding.layoutVariants.tag)
         }
         binding.layoutSlide.setOnClickListener {
-            binding.txtMultipage.setText(R.string.Multipage)
-            binding.txtOnepage.setText(R.string.Onepage)
-            binding.txtSlide.setText(R.string.u_Slide)
+            binding.txtMultipage.setText(com.konstudio.firstaid.R.string.Multipage)
+            binding.txtOnepage.setText(com.konstudio.firstaid.R.string.Onepage)
+            binding.txtSlide.setText(com.konstudio.firstaid.R.string.u_Slide)
 //            Toast.makeText(activity, "Когда-нибудь вариант изменится на пролистываемый", Toast.LENGTH_SHORT).show()
             binding.layoutVariants.tag = "Пролистываемый"
             Log.d("Variants", "Selected Slide variant, tag: " + binding.layoutVariants.tag)
@@ -87,7 +91,7 @@ class SettingsFragment : Fragment() {
 //        }?.apply()
 
         // SQLite + ROOM
-        val db = MainDb.getDb(activity as Context)
+        val db = MainDb.Companion.getDb(activity as Context)
 
         fun updateValueByName(name: String, value: String) {
             val entity = db.getDao().findByName(name)
@@ -101,14 +105,26 @@ class SettingsFragment : Fragment() {
             //Кнопка вызова СМП
             if (db.getDao().findByName("switchSMP") == null) {
                 Log.d("DB", "switchSMP is null")
-                db.getDao().insertItem(SettingsItem(null, "switchSMP", binding.switchSMP.isChecked.toString()))
+                db.getDao().insertItem(
+                    SettingsItem(
+                        null,
+                        "switchSMP",
+                        binding.switchSMP.isChecked.toString()
+                    )
+                )
             } else {
                 updateValueByName("switchSMP", binding.switchSMP.isChecked.toString())
             }
             //Вариант
             if (db.getDao().findByName("chosenVariant") == null) {
                 Log.d("DB", "chosenVariant is null")
-                db.getDao().insertItem(SettingsItem(null, "chosenVariant", binding.layoutVariants.tag.toString()))
+                db.getDao().insertItem(
+                    SettingsItem(
+                        null,
+                        "chosenVariant",
+                        binding.layoutVariants.tag.toString()
+                    )
+                )
             } else {
                 updateValueByName("chosenVariant", binding.layoutVariants.tag.toString())
             }
@@ -120,7 +136,7 @@ class SettingsFragment : Fragment() {
     private fun loadData() {
 
         //ROOM
-        val db = MainDb.getDb(activity as Context)
+        val db = MainDb.Companion.getDb(activity as Context)
         Thread {
             val savedBooleanSwitchSMP = db.getDao().findByName("switchSMP")?.value
             val savedVariant = db.getDao().findByName("chosenVariant")?.value
@@ -136,23 +152,23 @@ class SettingsFragment : Fragment() {
             if (savedVariant == "Одностраничный") {
                 requireActivity().runOnUiThread {
                     binding.layoutVariants.tag = savedVariant
-                    binding.txtMultipage.setText(R.string.Multipage)
-                    binding.txtOnepage.setText(R.string.u_Onepage)
-                    binding.txtSlide.setText(R.string.Slide)
+                    binding.txtMultipage.setText(com.konstudio.firstaid.R.string.Multipage)
+                    binding.txtOnepage.setText(com.konstudio.firstaid.R.string.u_Onepage)
+                    binding.txtSlide.setText(com.konstudio.firstaid.R.string.Slide)
                 }
             } else if (savedVariant == "Пролистываемый") {
                     requireActivity().runOnUiThread {
                         binding.layoutVariants.tag = savedVariant
-                        binding.txtMultipage.setText(R.string.Multipage)
-                        binding.txtOnepage.setText(R.string.Onepage)
-                        binding.txtSlide.setText(R.string.u_Slide)
+                        binding.txtMultipage.setText(com.konstudio.firstaid.R.string.Multipage)
+                        binding.txtOnepage.setText(com.konstudio.firstaid.R.string.Onepage)
+                        binding.txtSlide.setText(com.konstudio.firstaid.R.string.u_Slide)
                     }
             } else {
                     requireActivity().runOnUiThread {
                         binding.layoutVariants.tag = "Многостраничный"
-                        binding.txtMultipage.setText(R.string.u_Multipage)
-                        binding.txtOnepage.setText(R.string.Onepage)
-                        binding.txtSlide.setText(R.string.Slide)
+                        binding.txtMultipage.setText(com.konstudio.firstaid.R.string.u_Multipage)
+                        binding.txtOnepage.setText(com.konstudio.firstaid.R.string.Onepage)
+                        binding.txtSlide.setText(com.konstudio.firstaid.R.string.Slide)
                     }
             }
         }.start()

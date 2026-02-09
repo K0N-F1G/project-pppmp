@@ -1,22 +1,21 @@
-package com.konstudio.firstaid
+package com.konstudio.firstaid.Situations
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.konstudio.firstaid.databinding.FragmentSettingsBinding
+import com.konstudio.firstaid.R
+import com.konstudio.firstaid.Situations.Multipage.MP_UBP_Activity
+import com.konstudio.firstaid.Situations.Onepage.OP_UBP_Activity
+import com.konstudio.firstaid.Situations.Slidable.SLIDE_UBP_Activity
 import com.konstudio.firstaid.databinding.FragmentSituationsBinding
 
 class SituationsFragment : Fragment() {
@@ -35,7 +34,8 @@ class SituationsFragment : Fragment() {
 
         loadData()
 
-        viewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
+        viewModel = _root_ide_package_.androidx.lifecycle.ViewModelProvider(requireActivity())
+            .get(SharedViewModel::class.java)
         startForResult = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
         ) { result ->
@@ -80,19 +80,28 @@ class SituationsFragment : Fragment() {
 //            val intentOP = Intent(context, UBPOPActivity::class.java)
 //            startActivity(intentOP)
             Thread {
-                val intent = Intent(context, UBPOPActivity::class.java)
+                val intent = Intent(
+                    context,
+                    OP_UBP_Activity::class.java
+                )
                 startForResult.launch(intent)
             }.start()
         }
         binding.btnUBPSLIDE.setOnClickListener() {
             Thread {
-                val intent = Intent(context, UBPSLIDEActivity::class.java)
+                val intent = Intent(
+                    context,
+                    SLIDE_UBP_Activity::class.java
+                )
                 startForResult.launch(intent)
             }.start()
         }
         binding.btnUBPMP.setOnClickListener() {
             Thread {
-                val intent = Intent(context, UBPMPActivity::class.java)
+                val intent = Intent(
+                    context,
+                    MP_UBP_Activity::class.java
+                )
                 startForResult.launch(intent)
             }.start()
         }

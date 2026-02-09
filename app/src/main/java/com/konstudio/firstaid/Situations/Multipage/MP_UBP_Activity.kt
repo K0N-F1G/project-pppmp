@@ -1,18 +1,15 @@
-package com.konstudio.firstaid
+package com.konstudio.firstaid.Situations.Multipage
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.Html
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.viewpager2.widget.ViewPager2
+import com.konstudio.firstaid.R
+import com.konstudio.firstaid.Situations.Multipage.ViewPagerAdapter
 import com.konstudio.firstaid.databinding.ActivityUbpMpBinding
 import me.relex.circleindicator.CircleIndicator3
 
-
-class UBPMPActivity : AppCompatActivity() {
+class MP_UBP_Activity : AppCompatActivity() {
     lateinit var binding: ActivityUbpMpBinding
 
     private var txtList = mutableListOf<String>()

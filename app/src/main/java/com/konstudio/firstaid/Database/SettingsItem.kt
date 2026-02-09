@@ -1,10 +1,10 @@
-package com.konstudio.firstaid
+package com.konstudio.firstaid.Database
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity (tableName = "settings")
+@Entity(tableName = "settings")
 data class SettingsItem (
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null,

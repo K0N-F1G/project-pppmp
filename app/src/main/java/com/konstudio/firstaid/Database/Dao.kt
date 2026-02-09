@@ -1,9 +1,10 @@
-package com.konstudio.firstaid
+package com.konstudio.firstaid.Database
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
+import com.konstudio.firstaid.Database.SettingsItem
 import kotlinx.coroutines.flow.Flow
 
 @Dao

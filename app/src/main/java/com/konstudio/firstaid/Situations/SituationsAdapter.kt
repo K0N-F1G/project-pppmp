@@ -1,15 +1,17 @@
-package com.konstudio.firstaid
+package com.konstudio.firstaid.Situations
 
-import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.view.menu.MenuView.ItemView
 import androidx.recyclerview.widget.RecyclerView
-import com.konstudio.firstaid.ActivitiesMap
+import com.konstudio.firstaid.Database.MainDb
+import com.konstudio.firstaid.R
+import com.konstudio.firstaid.Situations.Multipage.MP_UBP_Activity
+import com.konstudio.firstaid.Situations.Onepage.OP_UBP_Activity
+import com.konstudio.firstaid.Situations.Slidable.SLIDE_UBP_Activity
 
 class SituationsAdapter (var mList: List<SituationsData>) : RecyclerView.Adapter<SituationsAdapter.SituationsViewHolder>() {
 
@@ -35,14 +37,14 @@ class SituationsAdapter (var mList: List<SituationsData>) : RecyclerView.Adapter
         holder.name.text = currentItem.name
         holder.itemView.setOnClickListener {
             Thread {
-                val db = MainDb.getDb(holder.itemView.context)
+                val db = MainDb.Companion.getDb(holder.itemView.context)
                 val savedVariant = db.getDao().findByName("chosenVariant")?.value.toString()
                 if (currentItem.name == "Устойчивое Боковое Положение") {
-                    var intent = Intent(holder.itemView.context, UBPMPActivity::class.java)
+                    var intent = Intent(holder.itemView.context, MP_UBP_Activity::class.java)
                     if (savedVariant == "Одностраничный") {
-                        intent = Intent(holder.itemView.context, UBPOPActivity::class.java)
+                        intent = Intent(holder.itemView.context, OP_UBP_Activity::class.java)
                     } else if (savedVariant == "Пролистываемый") {
-                        intent = Intent(holder.itemView.context, UBPSLIDEActivity::class.java)
+                        intent = Intent(holder.itemView.context, SLIDE_UBP_Activity::class.java)
                     }
                     holder.itemView.context.startActivity(intent)
                 }
